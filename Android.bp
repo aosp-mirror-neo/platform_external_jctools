@@ -1,0 +1,20 @@
+package {
+    default_applicable_licenses: ["jctools_license"],
+}
+
+license {
+    name: "jctools_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-Apache-2.0"],
+    license_text: ["LICENSE"],
+}
+
+// only the core is needed
+java_library_host {
+    name: "jctools-core",
+    srcs: ["jctools-core/src/main/java/**/*.java"],
+    exclude_srcs: [
+        "jctools-core/src/main/java/**/package-info.java",
+    ],
+    visibility: ["//external/opentelemetry-java:__subpackages__"],
+}
